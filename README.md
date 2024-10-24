@@ -1,8 +1,21 @@
-# React + Vite
+[Team ID]: 14
+A decentralized EV charging network system.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Description
+EV HUB is a platform that connects users to a network of shareable devices like EV charging stations. Through our application, users will be able to:
+Rent chargers from our network of stations
+Find an EV charger in proximity and charge the vehicles.
+By connecting EV charger to our platform, providers can earn passive income by sharing it with users.
 
-Currently, two official plugins are available:
+Tech Stack
+ Frontend - ReactJs , Tailwind CSS , Javascript 
+ Backend - Python , NodeJS 
+ DataBase - MongoDB
+ BlockChain - Solidity , Solana , MultiverseX , Ganache and truffle
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+Screenshots
+ [Include screenshots showcasing your solution.](https://www.figma.com/design/akoxTjhTQ5ZXqeZ2vbciz4/Untitled?node-id=0-1)
+
+Video URL
+ https://youtu.be/17tEIjyiBe0?si=foSjRd59IRvRf5by
