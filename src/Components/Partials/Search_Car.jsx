@@ -680,11 +680,22 @@ const Search_Car = () => {
                 </div>
             )}
             {/*Proceed Button*/}
-            <Link className="flex justify-center items-center bg-[#509B6F] px-5 py-3 rounded-lg"
+            {
+                addedCars.length > 0 && ( 
+                   
+                        <Link className="flex justify-center items-center bg-[#509B6F] px-5 py-3 rounded-lg"
+                            to="/nearbycars">
+
+                                <h1 className="font-bold text-2xl">Proceed</h1>
+                            </Link>)
+                    
+
+            }
+            {/* <Link className="flex justify-center items-center bg-[#509B6F] px-5 py-3 rounded-lg"
             to="/nearbycars">
 
                 <h1 className="font-bold text-2xl">Proceed</h1>
-            </Link>
+            </Link> */}
         </div>
     );
 }

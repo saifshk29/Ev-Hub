@@ -1,38 +1,49 @@
-import React from 'react'
-import { FaStar } from "react-icons/fa";
-import { IoMdNavigate } from "react-icons/io";
+import React from 'react';
 import { Link } from "react-router-dom";
-const Card = () => {
+const Card = ({ station }) => {
+  if (!station) return null;
+
   return (
-    <div className="bg-[#1E1E1E] text-white p-4 rounded-xl shadow-lg flex flex-col justify-evenly w-60 h-72">
-        <div className="flex  items-center gap-2">
-            <img src="\src\assets\Plug.svg" alt="Plug Icon" className="w-12 mb-4" />
-            <h4 className="text-2xl font-semibold mb-2">Rohan Joshi</h4>
-        </div>
-      
-      <div className="w-full flex flex-col">
-        <h2 className="mb-2 text-xl font-medium">
-          2 km <span className="text-gray-400 font-semibold text-lg">200/Hr</span>
-        </h2>
+    <div className="min-w-[300px] bg-white rounded-xl shadow-lg p-4">
+      <div className="flex flex-col gap-2">
+        <h3 className="text-lg font-semibold">{station.stationName}</h3>
+        {station.provider_info && (
+          <p className="text-gray-600 text-sm">
+            {station.provider_info.name && station.provider_info.charger_type 
+              ? `${station.provider_info.name}, ${station.provider_info.charger_type}`
+              : 'Provider information not available'}
+          </p>
+        )}
+        {station.address && (
+          <p className="text-gray-600 text-sm">
+            {station.address.street && station.address.city 
+              ? `${station.address.street}, ${station.address.city}`
+              : 'Address not available'}
+          </p>
+        )}
         
-        <p className="text-gray-400 mb-4 text-2xl">Akurdi Station</p>
-        <div className="flex justify-center mb-4 gap-2">
-          
-            <FaStar  className="text-yellow-500" />
-            <FaStar  className="text-yellow-500" />
-            <FaStar  className="text-yellow-500" />
-            <FaStar  className="text-yellow-500" />
-            <FaStar  className="text-white" />
-          
+        <div className="flex justify-between items-center mt-2">
+          <span className="text-green-600 font-medium">
+            ₹{station.price}/kWh
+          </span>
+          <span className={`px-2 py-1 rounded-full text-sm ${
+            station.available
+              ? 'bg-green-100 text-green-800'
+              : 'bg-red-100 text-red-800'
+          }`}>
+            {station.available ? 'Available' : 'Occupied'}
+          </span>
         </div>
-        <Link className="flex items-center bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg"
-        to="/providerinfo">
-          <IoMdNavigate className="mr-2" />
-          Navigate
-        </Link>
+
+        <Link
+  to={`/slots/${station._id}`}
+  className="mt-3 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-center"
+>
+  Book Now
+</Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

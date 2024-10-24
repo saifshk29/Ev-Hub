@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Search, ChevronDown } from 'lucide-react';
 import { useParams } from 'react-router-dom';
-
+import Side_Nav from '../Side_Nav';
 const EVSlotBooking = () => {
   const { stationId } = useParams();
   const [station, setStation] = useState(null);
@@ -88,7 +88,7 @@ const EVSlotBooking = () => {
       };
       
       console.log('Processing payment for:', paymentData);
-      // Add your payment API call here
+ 
       
     } catch (error) {
       console.error('Payment processing error:', error);
@@ -96,44 +96,19 @@ const EVSlotBooking = () => {
     }
   };
 
-  // Construct full address string
+
   const fullAddress = station.address ? 
     `${station.address.street}, ${station.address.city}, ${station.address.state} ${station.address.zipCode}` :
     'Address not available';
 
   return (
-    <div className="w-full min-h-screen bg-gray-900 p-6">
-      {/* Top Bar */}
-      <div className="max-w-3xl mx-auto mb-8">
-        <div className="flex justify-between items-center">
-          <button className="text-white">
-            <ChevronDown className="h-6 w-6" />
-          </button>
+    <div className="w-full h-screen flex flex-row">
+        <Side_Nav/>
+      
 
-          <div className="flex-1 mx-8">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-              <input
-                type="text"
-                placeholder="Search"
-                className="w-full bg-gray-800 text-white rounded-full py-2 pl-12 pr-4"
-              />
-            </div>
-          </div>
-
-          <div className="w-10 h-10 rounded-full bg-blue-500">
-            <img
-              src="/api/placeholder/40/40"
-              alt="Profile"
-              className="rounded-full w-full h-full object-cover"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Booking Card */}
-      <div className="bg-gray-800 rounded-xl p-8 max-w-3xl mx-auto">
-        {/* Station Info */}
+      
+      <div className="mt-10 w-[60%] h-[80%] self-center rounded-xl p-8 max-w-3xl mx-auto border-2">
+       
         <div className="flex items-center mb-6">
           <div className="w-12 h-12 rounded-full bg-blue-500 mr-4">
             <img
@@ -152,20 +127,19 @@ const EVSlotBooking = () => {
           </div>
         </div>
 
-        {/* Address */}
+        
         <p className="text-gray-300 mb-4">{fullAddress}</p>
 
-        {/* Charger Type */}
+      
         <p className="text-gray-300 mb-4">
           Charger Type: {station.provider_info?.charger_type || 'Not specified'}
         </p>
 
-        {/* Price */}
         <p className="text-white text-xl mb-8">
           Price: {station.price ? `₹${station.price}/kWh` : 'Price Not Available'}
         </p>
 
-        {/* Booking Slots */}
+      
         <div className="mb-8">
           <h3 className="text-white text-2xl font-bold mb-4">BOOKING SLOTS</h3>
           
