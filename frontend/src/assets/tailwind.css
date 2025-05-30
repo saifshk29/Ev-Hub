@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for the EV-Hub application */
+body {
+  @apply bg-[#333333] text-white;
+}
+
+.leaflet-container {
+  z-index: 0;
+}
+
+.leaflet-popup-content-wrapper {
+  @apply rounded-lg shadow-lg;
+}
+
+.leaflet-popup-content {
+  @apply p-1;
+}
+
+/* Custom marker styles */
+.marker-label-container {
+  @apply flex flex-col items-center whitespace-nowrap;
+}
+
+.marker-label {
+  @apply bg-white bg-opacity-90 px-2 py-1 rounded text-xs font-bold shadow mt-[-5px] border border-gray-200;
+}
