@@ -14,6 +14,7 @@ app.use(cors({
   origin: [
     'https://ev-hub-frontend.vercel.app',
     'https://ev-hub-frontend-j88xhvcq7-saif-shaikhs-projects-50542679.vercel.app',
+    'https://ev-hub-1.onrender.com',
     'http://localhost:8080'
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
