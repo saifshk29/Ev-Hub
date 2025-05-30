@@ -9,11 +9,16 @@ const authRoutes = require('./routes/auth');
 const app = express();
 
 // Middleware
-// For development/testing - allow all origins
+// Set up CORS with specific allowed origins
 app.use(cors({
-  origin: '*',  // This allows all origins
+  origin: [
+    'https://ev-hub-frontend.vercel.app',
+    'https://ev-hub-frontend-j88xhvcq7-saif-shaikhs-projects-50542679.vercel.app',
+    'http://localhost:8080'
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }));
 app.use(express.json());
 
