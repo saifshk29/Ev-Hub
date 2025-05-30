@@ -9,18 +9,23 @@ const authRoutes = require('./routes/auth');
 const app = express();
 
 // Middleware
-// Set up CORS with specific allowed origins
+// Set up CORS to allow all origins temporarily to debug the issue
 app.use(cors({
-  origin: [
-    'https://ev-hub-frontend.vercel.app',
-    'https://ev-hub-frontend-j88xhvcq7-saif-shaikhs-projects-50542679.vercel.app',
-    'https://ev-hub-1.onrender.com',
-    'http://localhost:8080'
-  ],
+  origin: '*', // Allow all origins temporarily
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+// Add a pre-flight OPTIONS handler for all routes
+app.options('*', cors());
+
+// Add custom headers as a backup method
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  next();
+});
 app.use(express.json());
 
 // Routes
