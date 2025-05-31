@@ -9,19 +9,17 @@ const authRoutes = require('./routes/auth');
 const app = express();
 
 // Middleware
-// Set up CORS with specific allowed origins
-app.use(cors());
+const corsOptions = {
+  origin: 'https://ev-hub-1.onrender.com',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true, // If your frontend sends credentials (e.g., cookies, Authorization header)
+  optionsSuccessStatus: 200 // For compatibility with older browsers/devices
+};
 
-// Add a pre-flight OPTIONS handler for all routes
-app.options('*', cors());
+app.use(cors(corsOptions)); // Apply CORS middleware globally with specific options
 
-// Add custom headers as a backup method
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://ev-hub-1.onrender.com');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  next();
-});
+// IMPORTANT: All other app.use() and route definitions must come AFTER app.use(cors(corsOptions))
 app.use(express.json());
 
 // Routes
