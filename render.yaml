@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: ev-hub-backend
+    runtime: node
+    rootDir: Server
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: JWT_SECRET
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: https://ev-hub-frontend.vercel.app,https://ev-hub-frontend-j88xhvcq7-saif-shaikhs-projects-50542679.vercel.app,http://localhost:8080

@@ -21,9 +21,9 @@ const stationSchema = new mongoose.Schema({
       required: true
     }
   },  
-  provider_info:{
-    name:String,
-    charger_type:String
+  provider_info: {
+    name: String,
+    charger_type: String
   },
   address: {
     street: String,
@@ -33,6 +33,20 @@ const stationSchema = new mongoose.Schema({
   },
   price: {
     type: Number,
+    required: true
+  },
+  // Added fields to meet assignment requirements
+  status: {
+    type: String,
+    enum: ['Active', 'Inactive'],
+    default: 'Active'
+  },
+  powerOutput: {
+    type: Number, // in kW
+    required: true
+  },
+  connectorType: {
+    type: String,
     required: true
   },
   available: {

@@ -9,7 +9,17 @@ const authRoutes = require('./routes/auth');
 const app = express();
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+  origin: 'https://ev-hub-1.onrender.com',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true, // If your frontend sends credentials (e.g., cookies, Authorization header)
+  optionsSuccessStatus: 200 // For compatibility with older browsers/devices
+};
+
+app.use(cors(corsOptions)); // Apply CORS middleware globally with specific options
+
+// IMPORTANT: All other app.use() and route definitions must come AFTER app.use(cors(corsOptions))
 app.use(express.json());
 
 // Routes
