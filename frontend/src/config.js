@@ -4,9 +4,9 @@ const config = {
   development: {
     apiUrl: 'http://localhost:5000/api'
   },
-  // Production API URL (update this with your Vercel backend URL once deployed)
+  // Production API URL (updated to use Render backend)
   production: {
-    apiUrl: 'https://ev-hub-backend.vercel.app/api'
+    apiUrl: 'https://ev-hub-backend.onrender.com/api'
   }
 };
 
